@@ -15,10 +15,13 @@ public class DemoApplicationTests {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Test
     public void contextLoads() {
-
-        log.info("==============================");
+        User test = userRepository.findByUsername("test");
+        log.info("=============================={}", test);
     }
 
 }
