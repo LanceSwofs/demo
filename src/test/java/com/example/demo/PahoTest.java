@@ -21,7 +21,7 @@ public class PahoTest {
     public void actionMQTT(String action, String clientId){
         String topic        = "MQTT Examples";
         String content      = "Message from MqttPublishSample";
-        int qos             = 2;
+        int qos             = 1;
         String protocol = "tcp://";
         String broker 		= "localhost";
         int port 			= 61613;

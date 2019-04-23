@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.rabbitmq;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import com.example.demo.jpa.User;
+import com.example.demo.jpa.UserRepository;
+import com.example.demo.mongodb.Customer;
+import com.example.demo.mongodb.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,17 +23,30 @@ public class DemoApplicationTests {
     private AmqpTemplate amqpTemplate;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @Test
     public void contextLoads() {
+        log.info("==============={}===============", "contextLoads");
+    }
+
+    @Test
+    public void testJPA(){
         User user = new User();
         user.setUsername("lixiao");
-        User save = userRepository.save(user);
-        log.info("=============================={}", save);
+        User saveUser = userRepository.save(user);
+        log.info("{}", saveUser);
     }
 
     @Test
     public void testAMQP(){
         amqpTemplate.convertAndSend("hello","Hello World!") ;
+    }
+
+    @Test
+    public void testMongoDB(){
+        Customer customer = customerRepository.save(new Customer("Lance", "X"));
+        log.info("{}", customer);
     }
 }
